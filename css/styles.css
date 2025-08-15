@@ -2,7 +2,6 @@
 .card-body,
 .container,
 .site-header {
-  font-family: 'Verdana', serif !important;
 }
 
 .jumbotron .display-4 {
@@ -32,8 +31,8 @@ nav a {
   height: 50vh;
   padding: 5em inherit;
   margin-bottom: 0;
-  background-color: #53C0FB;
-  background: url('../img/cover_back.png');
+  background-color: #53c0fb;
+  background: url("../img/cover_back.png");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -73,12 +72,12 @@ footer {
 }
 
 footer p {
-  margin-bottom: .25rem;
+  margin-bottom: 0.25rem;
 }
 
 .site-header a {
   color: white;
-  transition: ease-in-out color .15s;
+  transition: ease-in-out color 0.15s;
 }
 
 .site-header .dropdown-menu a {
@@ -86,7 +85,7 @@ footer p {
 }
 
 .dropzone {
-  border: 2px dashed #0087F7;
+  border: 2px dashed #0087f7;
   border-radius: 5px;
   background: white;
 }
@@ -187,4 +186,75 @@ a.custom-card:hover {
 
 .checked {
   color: orange;
+}
+
+/* CSS LOGING*/
+
+.h2-login {
+  font-family: "jost" ;
+  font-weight: 600;
+  padding: 0 10px 0 40px;
+  font-size: 70px;
+}
+
+.form-login {
+  background-color: transparent;
+  padding: 25px 0;
+  max-width: 400px;
+  margin: auto;
+  margin-top: 10%;
+}
+
+.div-login {
+  text-align: center;
+  padding-top: 20px;
+}
+.div-input {
+  padding: 5px 45px 10px 25px;
+}
+
+.form-control {
+  margin: 10px;
+  padding: 5px;
+  background: transparent !important;
+  border: none;
+  border-bottom: 1px solid #27262c !important;
+  color: white;
+  outline: none;
+  font-size: 16px;
+  transition: ease-in-out 0.3s;
+}
+
+.form-control:hover {
+  font-size: 18px;
+}
+
+.form-control:focus {
+  outline: none;
+  box-shadow: none;
+}
+
+.submit-login {
+  padding: 10px;
+  width: 84%;
+  background-color: #27262c;
+  color: white;
+  border: none;
+  transition: ease-in-out 0.2s;
+}
+
+.submit-login:hover {
+  padding: 12px;
+  scale: 108%;
+  box-shadow: 0px 10px 10px 0 rgba(54, 54, 54, 0.137);
+}
+
+input::placeholder {
+  color: white !important;
+  opacity: 1 !important;
+}
+
+.letra-o {
+  color: white;
+  padding-top: 10px;
 }
