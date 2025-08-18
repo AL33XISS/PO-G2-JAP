@@ -1,9 +1,3 @@
-.jumbotron,
-.card-body,
-.container,
-.site-header {
-}
-
 .jumbotron .display-4 {
   font-weight: bold;
 }
@@ -25,19 +19,6 @@ nav a {
   .bd-placeholder-img-lg {
     font-size: 3.5rem;
   }
-}
-
-.jumbotron {
-  height: 50vh;
-  padding: 5em inherit;
-  margin-bottom: 0;
-  background-color: #53c0fb;
-  background: url("../img/cover_back.png");
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  color: black;
-  font-weight: bold;
 }
 
 @media (min-width: 768px) {
@@ -188,10 +169,10 @@ a.custom-card:hover {
   color: orange;
 }
 
-/* CSS LOGING*/
+/* CSS LOGIN*/
 
 .h2-login {
-  font-family: "jost" ;
+  font-family: "jost";
   font-weight: 600;
   padding: 0 10px 0 40px;
   font-size: 70px;
@@ -258,3 +239,41 @@ input::placeholder {
   color: white;
   padding-top: 10px;
 }
+
+body {
+  background-image: url(..//img/fondo_login.png);
+  background-repeat: no-repeat;
+}
+
+.card-animation {
+  transition: all 0.3s;
+}
+
+.card-animation:hover {
+  transform: scale(1.05);
+}
+
+.botonMas {
+  background-color: #27262c;
+  width: 20%;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.botonMas a {
+  color: white;
+  text-decoration: none;
+}
+
+/* ANIMACION DE BOTONES*/
+
+.btnAnimado {
+  transition: all 0.3s;
+}
+
+.btnAnimado:hover {
+  transform: scale(1.05);
+  color: white;
+}
+
+/* ANIMACION DE BOTONES*/
