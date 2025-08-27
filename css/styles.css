@@ -276,7 +276,7 @@ body {
 
 .botonMas {
   background-color: #27262c;
-  width: 20%;
+  width: auto;
   margin: 0 auto;
   text-align: center;
 }
@@ -374,9 +374,81 @@ body {
   padding: 6px 12px;
 }
 
+
+
 /*RESPONSIVE*/
 
 @media (max-width: 768px) {
+  .h2-login {
+    display: flex;
+    justify-content: center;
+  }
+
+
+  .contenedor {
+    grid-template-columns: 1fr !important;
+    grid-template-rows: auto;
+    gap: 8px;
+    margin: 0;
+  }
+
+  .product-card {
+    min-height: 250px;
+    font-size: 14px;
+    padding: 10px;
+  }
+
+  .container {
+    align-items: center;
+    justify-content: center;
+  }
+
+  .usuario-menu {
+    display: flex !important;
+    justify-content: center;
+    position: relative;
+    width: 100%;
+    margin-top: 10px;
+  }
+
+  .usuario-menu button {
+    background: #3498db;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+
+  .dropdown {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: white;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    min-width: 140px;
+    text-align: center;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+    z-index: 1000;
+  }
+
+  .dropdown a {
+    display: block;
+    padding: 8px 12px;
+    text-decoration: none;
+    color: black;
+  }
+
+  .dropdown a:hover {
+    background: #eee;
+  }
+}
+
+
+@media (min-width: 769px) and (max-width: 1023px) {
   .h2-login {
     display: flex;
     justify-content: center;
@@ -394,13 +466,55 @@ body {
     font-size: 14px;
     padding: 10px;
   }
-}
 
-
-@media (max-width: 320px) {
-  .form-control {
-    text-align: center;
+  .container {
+    align-items: center;
+    justify-content: center;
   }
+
+  .usuario-menu {
+    display: flex !important;
+    justify-content: center;
+    position: relative;
+    width: 100%;
+    margin-top: 10px;
+  }
+
+  .usuario-menu button {
+    background: #3498db;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+
+  .dropdown {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: white;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    min-width: 140px;
+    text-align: center;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+    z-index: 1000;
+  }
+
+  .dropdown a {
+    display: block;
+    padding: 8px 12px;
+    text-decoration: none;
+    color: black;
+  }
+
+  .dropdown a:hover {
+    background: #eee;
+  }
+  
 }
 
 /*CERRAR SESION*/
@@ -408,6 +522,7 @@ body {
 .usuario-menu {
   position: relative;
   display: inline-block;
+  justify-content: center;
 }
 
 .usuario-menu button {
@@ -421,9 +536,9 @@ body {
 
 .dropdown {
   display: none;
-  position: absolute;   
-  top: 100%;           
-  right: 0;             
+  position: absolute;
+  top: 100%;
+  right: 0;
   background: white;
   border: 1px solid #ccc;
   border-radius: 5px;
@@ -433,7 +548,7 @@ body {
 }
 
 .dropdown a {
-  display: block;       
+  display: block;
   padding: 8px 12px;
   text-decoration: none;
   color: black;
@@ -443,13 +558,14 @@ body {
   background: #eee;
 }
 
-#cerrar-sesion{
-  margin:0;
+#cerrar-sesion {
+  margin: 0;
   position: relative;
-  display: inline-block;
+  display: inline-flex;
 
 }
 
-html, body {
+html,
+body {
   overflow-x: hidden;
 }
