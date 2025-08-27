@@ -6,6 +6,20 @@ nav a {
   text-decoration: none;
 }
 
+.navbar-nav {
+  align-items: center;
+}
+
+#usuario-email {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  padding: 0 10px;
+  background-color: #0088f793;
+  border: 2px solid skyblue;
+  border-radius: 10px;
+}
+
 .bd-placeholder-img {
   font-size: 1.125rem;
   text-anchor: middle;
@@ -172,6 +186,8 @@ a.custom-card:hover {
 
 /* CSS LOGIN*/
 
+
+
 .h2-login {
   font-family: "jost";
   font-weight: 600;
@@ -191,6 +207,7 @@ a.custom-card:hover {
   text-align: center;
   padding-top: 20px;
 }
+
 .div-input {
   padding: 5px 45px 10px 25px;
 }
@@ -284,25 +301,25 @@ body {
 
 .contenedor {
   display: grid;
-  grid-template-columns: repeat(3, 1fr); 
+  grid-template-columns: repeat(3, 1fr);
   grid-template-rows: repeat(3, 1fr);
   gap: 8px;
   margin-top: 50px;
 }
 
 .product-card {
-background-color: white;
-border-radius: 10px;
-box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
-display: flex;
-flex-direction: column;
-align-items: stretch;
-justify-content: flex-start;
-font-size: 16px;
-color: black;
-padding: 16px;
-transition: box-shadow 0.2s;
-min-height: 340px;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: flex-start;
+  font-size: 16px;
+  color: black;
+  padding: 16px;
+  transition: box-shadow 0.2s;
+  min-height: 340px;
 }
 
 .product-card:hover {
@@ -357,3 +374,82 @@ min-height: 340px;
   padding: 6px 12px;
 }
 
+/*RESPONSIVE*/
+
+@media (max-width: 768px) {
+  .h2-login {
+    display: flex;
+    justify-content: center;
+  }
+
+  .contenedor {
+    grid-template-columns: 1fr !important;
+    grid-template-rows: auto;
+    gap: 8px;
+    margin: 0;
+  }
+
+  .product-card {
+    min-height: 250px;
+    font-size: 14px;
+    padding: 10px;
+  }
+}
+
+
+@media (max-width: 320px) {
+  .form-control {
+    text-align: center;
+  }
+}
+
+/*CERRAR SESION*/
+
+.usuario-menu {
+  position: relative;
+  display: inline-block;
+}
+
+.usuario-menu button {
+  background: #3498db;
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.dropdown {
+  display: none;
+  position: absolute;   
+  top: 100%;           
+  right: 0;             
+  background: white;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  min-width: 120px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+  z-index: 1000;
+}
+
+.dropdown a {
+  display: block;       
+  padding: 8px 12px;
+  text-decoration: none;
+  color: black;
+}
+
+.dropdown a:hover {
+  background: #eee;
+}
+
+#cerrar-sesion{
+  margin:0;
+  position: relative;
+  display: inline-block;
+
+}
+
+html, body {
+  overflow-x: hidden;
+}
