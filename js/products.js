@@ -1,4 +1,6 @@
-fetch('https://japceibal.github.io/emercado-api/cats_products/101.json')
+const catID = localStorage.getItem("catID");
+
+fetch('https://japceibal.github.io/emercado-api/cats_products/'+ catID +'.json')
     .then(respuesta => respuesta.json())
     .then(autos => {
         const contenedor = document.querySelector('.contenedor');
@@ -31,5 +33,7 @@ fetch('https://japceibal.github.io/emercado-api/cats_products/101.json')
     .catch(error => {
         console.error('Error al cargar autos:', error);
     });
+
+    
 
 
