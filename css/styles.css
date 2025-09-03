@@ -1,7 +1,27 @@
-.jumbotron .display-4 {
-  font-weight: bold;
+/*=============================================
+=                 GENERAL                    =
+=============================================*/
+body {
+  background-image: url(..//img/fondo_login.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  font-family: Arial, sans-serif;
+  margin: 0;
 }
 
+h1 {
+  text-align: center;
+}
+
+a {
+  text-decoration: none;
+}
+
+/*=============================================
+=                 NAVBAR                     =
+=============================================*/
 nav a {
   text-decoration: none;
 }
@@ -10,36 +30,87 @@ nav a {
   align-items: center;
 }
 
+.site-header a {
+  color: white;
+  transition: ease-in-out color 0.15s;
+}
+
+.site-header .dropdown-menu a {
+  color: black;
+}
+
+/*=============================================
+=                 USUARIO                     =
+=============================================*/
 #usuario-email {
-  display: flex;
-  align-items: center;
-  height: 100%;
-  padding: 0 10px;
-  background-color: #0088f793;
-  border: 2px solid skyblue;
-  border-radius: 10px;
+  margin-top: 5px;
+  padding: 8px 18px;
+  border: none;
+  border-radius: 8px;
+  background: linear-gradient(135deg, #007bff, #00d4ff);
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
 }
 
-.bd-placeholder-img {
-  font-size: 1.125rem;
-  text-anchor: middle;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
+#usuario-email:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(0,123,255,0.3);
+  background: linear-gradient(135deg, #0056b3, #00a6d6);
+
 }
 
-@media (min-width: 768px) {
-  .bd-placeholder-img-lg {
-    font-size: 3.5rem;
-  }
+.usuario-menu {
+  position: relative;
+  display: inline-block;
+  justify-content: center;
 }
 
-@media (min-width: 768px) {
-  .jumbotron {
-    padding-top: 6rem;
-    padding-bottom: 6rem;
-  }
+.usuario-menu button {
+  background: #3498db;
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.dropdown {
+  display: none;
+  position: absolute;
+  top: 100%;
+  right: 0;
+  background: white;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  min-width: 120px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+  z-index: 1000;
+}
+
+.dropdown a {
+  display: block;
+  padding: 8px 12px;
+  text-decoration: none;
+  color: black;
+}
+
+.dropdown a:hover {
+  background: #eee;
+}
+
+#cerrar-sesion {
+  margin: 0;
+  position: relative;
+  display: inline-flex;
+}
+
+/*=============================================
+=                 JUMBOTRON                   =
+=============================================*/
+.jumbotron .display-4 {
+  font-weight: bold;
 }
 
 .jumbotron p:last-child {
@@ -61,6 +132,16 @@ nav a {
   font-size: 38px;
 }
 
+@media (min-width: 768px) {
+  .jumbotron {
+    padding-top: 6rem;
+    padding-bottom: 6rem;
+  }
+}
+
+/*=============================================
+=                 FOOTER                     =
+=============================================*/
 footer {
   padding-top: 3rem;
   padding-bottom: 3rem;
@@ -70,31 +151,48 @@ footer p {
   margin-bottom: 0.25rem;
 }
 
-.site-header a {
-  color: white;
-  transition: ease-in-out color 0.15s;
+/*=============================================
+=                 PLACEHOLDERS / IMG         =
+=============================================*/
+.bd-placeholder-img {
+  font-size: 1.125rem;
+  text-anchor: middle;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
 
-.site-header .dropdown-menu a {
-  color: black;
-}
-
-.dropzone {
-  border: 2px dashed #0087f7;
-  border-radius: 5px;
-  background: white;
+@media (min-width: 768px) {
+  .bd-placeholder-img-lg {
+    font-size: 3.5rem;
+  }
 }
 
 .img-fit {
   max-height: 100%;
 }
 
+/*=============================================
+=                 ALERT / SPINNER             =
+=============================================*/
 .alert {
   position: fixed;
   top: 80px;
   width: 50%;
   left: 50%;
   transform: translate(-50%, 0);
+}
+
+#spinner-wrapper {
+  position: fixed;
+  background-color: rgba(0, 0, 0, 0.5);
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: 1021;
+  display: none;
 }
 
 .lds-ring {
@@ -104,16 +202,6 @@ footer p {
   height: 64px;
   top: 50%;
   left: 50%;
-}
-
-.cursor-active {
-  cursor: pointer;
-}
-
-.left {
-  float: left;
-  padding: 4px;
-  background-color: rgba(255, 255, 255, 0.5);
 }
 
 .lds-ring div {
@@ -142,52 +230,26 @@ footer p {
 }
 
 @keyframes lds-ring {
-  0% {
-    transform: rotate(0deg);
-  }
-
-  100% {
-    transform: rotate(360deg);
-  }
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
 }
 
-.signin {
-  width: 100%;
-  max-width: 330px;
-  padding: 15px;
-  margin: auto;
+/*=============================================
+=                 CURSOR / FLOAT             =
+=============================================*/
+.cursor-active {
+  cursor: pointer;
 }
 
-#spinner-wrapper {
-  position: fixed;
-  background-color: rgba(0, 0, 0, 0.5);
-  width: 100%;
-  height: 100%;
-  top: 0;
-  left: 0;
-  z-index: 1021;
-  display: none;
+.left {
+  float: left;
+  padding: 4px;
+  background-color: rgba(255, 255, 255, 0.5);
 }
 
-main {
-  min-height: calc(100vh - 210px);
-}
-
-a.custom-card,
-a.custom-card:hover {
-  color: inherit;
-  text-decoration: inherit;
-}
-
-.checked {
-  color: orange;
-}
-
-
-/* CSS LOGIN*/
-
-
-
+/*=============================================
+=                 LOGIN                       =
+=============================================*/
 .h2-login {
   font-family: "jost";
   font-weight: 600;
@@ -233,6 +295,11 @@ a.custom-card:hover {
   box-shadow: none;
 }
 
+input::placeholder {
+  color: white !important;
+  opacity: 1 !important;
+}
+
 .submit-login {
   padding: 10px;
   width: 84%;
@@ -248,30 +315,29 @@ a.custom-card:hover {
   box-shadow: 0px 10px 10px 0 rgba(54, 54, 54, 0.137);
 }
 
-input::placeholder {
-  color: white !important;
-  opacity: 1 !important;
-}
-
 .letra-o {
   color: white;
   padding-top: 10px;
 }
 
-body {
-  background-image: url(..//img/fondo_login.png);
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center;
-  background-attachment: fixed;
-}
-
+/*=============================================
+=                 CARD / ANIMACIONES          =
+=============================================*/
 .card-animation {
   transition: all 0.3s;
 }
 
 .card-animation:hover {
   transform: scale(1.05);
+}
+
+.btnAnimado {
+  transition: all 0.3s;
+}
+
+.btnAnimado:hover {
+  transform: scale(1.05);
+  color: white;
 }
 
 .botonMas {
@@ -286,19 +352,9 @@ body {
   text-decoration: none;
 }
 
-/* ANIMACION DE BOTONES*/
-
-.btnAnimado {
-  transition: all 0.3s;
-}
-
-.btnAnimado:hover {
-  transform: scale(1.05);
-  color: white;
-}
-
-/* ANIMACION DE BOTONES*/
-
+/*=============================================
+=                 PRODUCTOS / GRID           =
+=============================================*/
 .contenedor {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -374,16 +430,75 @@ body {
   padding: 6px 12px;
 }
 
+/*=============================================
+=                 FILTROS / PRODUCTS         =
+=============================================*/
+.filters {
+  margin: 20px auto;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  justify-content: center;
+  background-color: rgba(255, 255, 255, 0.7); /* casi transparente */
+  padding: 12px 16px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  backdrop-filter: blur(5px); /* efecto de vidrio */
+}
 
+.filters label {
+  display: flex;
+  flex-direction: column;
+  font-weight: 600;
+  font-size: 14px;
+  color: #333;
+}
 
-/*RESPONSIVE*/
+.filters input,
+.filters select {
+  margin-top: 5px;
+  padding: 8px 12px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 14px;
+  transition: all 0.3s ease;
+  background-color: rgba(255, 255, 255, 0.9);
+}
 
+.filters input:focus,
+.filters select:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 8px rgba(0,123,255,0.4);
+  outline: none;
+}
+
+/* BOTÓN DE FILTRO */
+.filters button {
+  margin-top: 5px;
+  padding: 8px 18px;
+  border: none;
+  border-radius: 8px;
+  background: linear-gradient(135deg, #007bff, #00d4ff);
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.filters button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(0,123,255,0.3);
+  background: linear-gradient(135deg, #0056b3, #00a6d6);
+}
+
+/*=============================================
+=                 RESPONSIVE                  =
+=============================================*/
 @media (max-width: 768px) {
   .h2-login {
     display: flex;
     justify-content: center;
   }
-
 
   .contenedor {
     grid-template-columns: 1fr !important;
@@ -446,7 +561,6 @@ body {
     background: #eee;
   }
 }
-
 
 @media (min-width: 769px) and (max-width: 1023px) {
   .h2-login {
@@ -514,58 +628,76 @@ body {
   .dropdown a:hover {
     background: #eee;
   }
-  
 }
 
-/*CERRAR SESION*/
+/*=============================================
+=             BARRA DE BUSQUEDA               =
+=============================================*/
 
-.usuario-menu {
-  position: relative;
-  display: inline-block;
+.search-container {
+  display: flex;
   justify-content: center;
+  margin: 5px 0;
 }
 
-.usuario-menu button {
-  background: #3498db;
-  color: white;
-  border: none;
+#searchInput {
+  width: 300px;
   padding: 8px 12px;
-  border-radius: 5px;
-  cursor: pointer;
-}
-
-.dropdown {
-  display: none;
-  position: absolute;
-  top: 100%;
-  right: 0;
-  background: white;
   border: 1px solid #ccc;
-  border-radius: 5px;
-  min-width: 120px;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+  border-radius: 8px;
+  font-size: 14px;
+  transition: all 0.3s ease;
+}
+
+#searchInput:focus {
+  outline: none;
+  border-color: #007bff;
+  box-shadow: 0 0 6px rgba(0,123,255,0.4);
+}
+
+#searchInput::placeholder {
+  color: rgb(105, 103, 103) !important;
+}
+
+.search-results {
+  position: absolute;
+  top: 60px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 90%;
+  max-width: 500px;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.12);
   z-index: 1000;
+  padding: 16px;
+  display: none;
+}
+.search-result-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 0;
+  border-bottom: 1px solid #eee;
+}
+.search-result-item:last-child {
+  border-bottom: none;
+}
+.search-result-img {
+  width: 48px;
+  height: 48px;
+  object-fit: cover;
+  border-radius: 6px;
+}
+.search-result-name {
+  font-weight: bold;
+  color: #3498db;
+}
+.search-result-desc {
+  font-size: 0.95em;
+  color: #555;
 }
 
-.dropdown a {
-  display: block;
-  padding: 8px 12px;
-  text-decoration: none;
-  color: black;
-}
-
-.dropdown a:hover {
-  background: #eee;
-}
-
-#cerrar-sesion {
-  margin: 0;
-  position: relative;
-  display: inline-flex;
-
-}
-
-html,
-body {
-  overflow-x: hidden;
-}
+/*=============================================
+=             PRODUCTO-INFO               =
+=============================================*/

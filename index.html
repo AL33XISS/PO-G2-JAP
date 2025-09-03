@@ -7,43 +7,55 @@
   <title>eMercado - Todo lo que busques está aquí</title>
 
   <link href="https://fonts.googleapis.com/css?family=Raleway:300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
+  <link href="css/font-awesome.min.css" rel="stylesheet">
   <link href="css/bootstrap.min.css" rel="stylesheet">
   <link href="css/styles.css" rel="stylesheet">
 </head>
 
 <body>
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark p-1">
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark py-2 shadow-sm">
     <div class="container">
-      <a class="navbar-brand" href="index.html">eMercado</a>
-
-      <!-- Botón hamburguesa -->
+      <a class="navbar-brand d-flex align-items-center" href="index.html">
+        <span class="fw-bold">eMercado</span>
+      </a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
         aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
-
-      <!-- Menú -->
       <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav me-auto">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item">
-            <a class="nav-link active" href="index.html">Inicio</a>
+            <a class="nav-link active" href="index.html">
+              <i class="fa fa-home me-1"></i>Inicio
+            </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="categories.html">Categorías</a>
+            <a class="nav-link" href="categories.html">
+              <i class="fa fa-th-large me-1"></i>Categorías
+            </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="sell.html">Vender</a>
+            <a class="nav-link" href="sell.html">
+              <i class="fa fa-tag me-1"></i>Vender
+            </a>
           </li>
         </ul>
 
-        <div class="usuario-menu ms-auto jus">
-          <button id="usuario-email"></button>
-          <div class="dropdown" id="menu-opciones">
-            <a href="#" id="cerrar-sesion">Cerrar sesión</a>
+        <div class="search-container">
+          <input type="text" id="searchInput" placeholder="Buscar productos...">
+        </div>
+
+        <div id="searchResults" class="search-results"></div>
+
+        <div class="usuario-menu ms-auto d-flex align-items-center">
+          <button id="usuario-email" class="btn btn-info btn-sm me-2"></button>
+          <div id="menu-opciones" class="dropdown-menu" style="display:none; position:absolute;">
+            <a href="#" id="cerrar-sesion" class="dropdown-item text-danger">
+              <i class="fa fa-sign-out me-1"></i>Cerrar sesión
+            </a>
           </div>
         </div>
       </div>
-    </div>
   </nav>
 
   <main>
