@@ -363,6 +363,49 @@ input::placeholder {
   margin-top: 50px;
 }
 
+.list-group{
+  padding-right: 0;
+}
+
+#contenedorCategorias{
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  margin: 3% 10%;
+  border-radius: 25px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.527);
+}
+
+#rangeFilterCount{
+  background-color: #27262c;
+  color: white;
+  margin: 0 5px;
+}
+
+#clearRangeFilter{
+  background-color: #27262c;
+  color: white;
+  margin: 0 5px;
+}
+
+.btn-group{
+  align-items: stretch;
+}
+
+.botonFiltrado{
+  background-color: #27262c;
+  color: white;
+}
+
+.cajaFiltrado{
+margin: 0 50px 0;
+}
+
+.campoFiltro{
+  color: black !important;
+  margin: 0 0 5px 0;
+}
+
 .product-card {
   background-color: white;
   border-radius: 10px;
@@ -560,6 +603,38 @@ input::placeholder {
   .dropdown a:hover {
     background: #eee;
   }
+
+  #contenedorCategorias{
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  margin: 3% 10%;
+  border-radius: 25px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.527);
+}
+
+.cajaFiltrado{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#contenedorCategorias{
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  margin: 0;
+  padding: 0;
+  border-radius: 0px;
+  box-shadow: 0;
+}
+
+}
+
+@media (max-width: 500px) {
+  .rango{
+    padding-right: 40px;
+  }
 }
 
 @media (min-width: 769px) and (max-width: 1023px) {
@@ -662,7 +737,7 @@ input::placeholder {
 .search-results {
   position: absolute;
   top: 60px;
-  left: 50%;
+  left: 57%;
   transform: translateX(-50%);
   width: 90%;
   max-width: 500px;
