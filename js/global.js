@@ -5,9 +5,6 @@ const cerrarSesion = document.getElementById("cerrar-sesion");
 const searchInput = document.getElementById("searchInput");
 const productsContainer = document.getElementById("productsContainer");
 
-
-
-
 if (email) {
     usuarioEmail.textContent = email;
 
@@ -35,14 +32,11 @@ if (email) {
     menuOpciones.style.display = "none";
 }
 
-
-
 // Cargar todos los productos
 
 let allProducts = [];
 
-// Lista de IDs de categorías (puedes obtenerla de la API o definirla manualmente)
-const categoryIDs = [101, 102, 103, 104]; // Ejemplo: autos, juguetes, muebles, etc.
+const categoryIDs = [101, 102, 103, 104];
 
 async function cargarTodosLosProductos() {
     allProducts = [];
@@ -52,12 +46,14 @@ async function cargarTodosLosProductos() {
             const res = await fetch(url);
             const data = await res.json();
             const productosCat = data.products.map(p => ({
+                id: p.id,
                 name: p.name,
                 description: p.description,
                 price: p.cost,
                 currency: p.currency,
                 image: p.image,
-                category: data.catName
+                category: data.catName,
+                catID: catID
             }));
             allProducts = allProducts.concat(productosCat);
         } catch (e) {
@@ -66,10 +62,7 @@ async function cargarTodosLosProductos() {
     }
 }
 
-// Llama a la función al cargar la página
 cargarTodosLosProductos();
-
-
 
 // BARRA DE BUSQUEDA
 
@@ -90,7 +83,10 @@ searchInput.addEventListener("input", () => {
         resultsContainer.innerHTML = "<div>No se encontraron productos.</div>";
     } else {
         resultsContainer.innerHTML = filtered.map(p => `
-            <div class="search-result-item">
+            <div class="search-result-item" 
+                 data-id="${p.id}" 
+                 data-cat="${p.catID}" 
+                 style="cursor:pointer;">
                 <img src="${p.image}" class="search-result-img" alt="${p.name}">
                 <div>
                     <div class="search-result-name">${p.name}</div>
@@ -101,9 +97,19 @@ searchInput.addEventListener("input", () => {
         `).join("");
     }
     resultsContainer.style.display = "block";
+
+    // Link de cada resultado a su respectivo producto
+    resultsContainer.querySelectorAll('.search-result-item').forEach(item => {
+        item.addEventListener('click', () => {
+            const id = item.getAttribute('data-id');
+            const catID = item.getAttribute('data-cat');
+            localStorage.setItem('productoSeleccionado', id);
+            localStorage.setItem('catID', catID);
+            window.location.href = 'product-info.html';
+        });
+    });
 });
 
-// Opcional: Ocultar el recuadro si se hace click fuera
 document.addEventListener("click", (e) => {
     if (!e.target.closest("#searchInput") && !e.target.closest("#searchResults")) {
         document.getElementById("searchResults").style.display = "none";

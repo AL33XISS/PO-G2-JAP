@@ -6,16 +6,17 @@ fetch('https://japceibal.github.io/emercado-api/cats_products/' + catID + '.json
   .then(respuesta => respuesta.json())
   .then(data => {
     products = data.products.map(auto => ({
+      id: auto.id, // <--- agrega el id
       name: auto.name,
       price: auto.cost,
       sold: auto.soldCount,
       description: auto.description,
       image: auto.image,
       currency: auto.currency,
-      category: data.catName 
+      category: data.catName
     }));
 
-    mostrarProductos(products); 
+    mostrarProductos(products);
   })
   .catch(error => console.error('Error al cargar autos:', error));
 
@@ -28,8 +29,9 @@ function mostrarProductos(lista) {
     const card = document.createElement('div');
     card.className = 'product-card';
     card.innerHTML = `
-      <div class="img">
-        <img src="${auto.image}" alt="${auto.name}" style="max-width:100%;height:auto;">
+      <div class="img product-img-hover">
+        <img src="${auto.image}" alt="${auto.name}">
+        <button class="ver-producto-btn" data-id="${auto.id}">Ver producto</button>
       </div>
       <div class="description">
         <h5>${auto.name}</h5>
@@ -46,8 +48,27 @@ function mostrarProductos(lista) {
     `;
     contenedor.appendChild(card);
   }
+
+  document.querySelectorAll('.product-img-hover').forEach(div => {
+    div.addEventListener('mouseenter', () => {
+      div.querySelector('.ver-producto-btn').style.display = 'block';
+    });
+    div.addEventListener('mouseleave', () => {
+      div.querySelector('.ver-producto-btn').style.display = 'none';
+    });
+  });
+
+  document.querySelectorAll('.ver-producto-btn').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      const id = btn.getAttribute('data-id');
+      localStorage.setItem('productoSeleccionado', id);
+      window.location.href = 'product-info.html';
+      e.stopPropagation();
+    });
+  });
+
 }
 
-    
 
 
+ 

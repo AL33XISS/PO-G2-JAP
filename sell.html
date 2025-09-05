@@ -14,40 +14,33 @@
 
 <body>
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark py-2 shadow-sm sticky-top">
-    <div class="container">
-      <a class="navbar-brand d-flex align-items-center" href="index.html">
-        <span class="fw-bold">eMercado</span>
-      </a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+    <div class="container position-relative d-flex align-items-center">
+      <a class="navbar-brand fw-bold" href="index.html">eMercado</a>
+      <!-- Barra de búsqueda SIEMPRE visible -->
+      <div class="search-container mx-2 flex-grow-1">
+        <input type="text" autocomplete="off" id="searchInput" placeholder="Buscar productos...">
+        <div id="searchResults" class="search-results"></div>
+      </div>
+      <button class="navbar-toggler ms-2" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
         aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
+      <!-- Opciones de navegación y usuario dentro del collapse -->
       <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0 text-center w-100">
           <li class="nav-item">
-            <a class="nav-link" href="index.html">
-              <i class="fa fa-home me-1"></i>Inicio
-            </a>
+            <a class="nav-link active" href="index.html"><i class="fa fa-home me-1"></i>Inicio</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="categories.html">
-              <i class="fa fa-th-large me-1"></i>Categorías
-            </a>
+            <a class="nav-link" href="categories.html"><i class="fa fa-th-large me-1"></i>Categorías</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link active" href="sell.html">
-              <i class="fa fa-tag me-1"></i>Vender
-            </a>
+            <a class="nav-link" href="sell.html"><i class="fa fa-tag me-1"></i>Vender</a>
           </li>
         </ul>
-
-        <div class="search-container">
-          <input type="text" id="searchInput" autocomplete="off" placeholder="Buscar productos...">
-        </div>
-
-        
-        <div class="usuario-menu ms-auto d-flex align-items-center">
-          <button id="usuario-email" class="btn btn-info btn-sm me-2"></button>
+        <!-- Botón usuario/iniciar sesión al final del menú hamburguesa -->
+        <div class="usuario-menu w-100 d-flex justify-content-center mt-2">
+          <button id="usuario-email" class="btn btn-info btn-sm w-100"></button>
           <div id="menu-opciones" class="dropdown-menu" style="display:none; position:absolute;">
             <a href="#" id="cerrar-sesion" class="dropdown-item text-danger">
               <i class="fa fa-sign-out me-1"></i>Cerrar sesión
@@ -55,6 +48,7 @@
           </div>
         </div>
       </div>
+    </div>
   </nav>
 
   <div class="container">
