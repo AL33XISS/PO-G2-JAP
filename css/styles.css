@@ -65,6 +65,7 @@ nav a {
   position: relative;
   display: inline-block;
   justify-content: center;
+  margin-bottom: 10px;
 }
 
 .usuario-menu button {
@@ -651,6 +652,22 @@ input::placeholder {
 
   }
 
+      .sold-badge{
+    margin: 5% 25% 5% 25% !important;
+    text-align: center !important;
+  }
+
+  .flex-responsive{
+    display: flex;
+    flex-direction: column;
+    max-width: 100%;
+    gap: 10px;
+  }
+
+  .poructInfoConteiner{
+    width: 100%;
+    display: inline;
+  }
 
 }
 
@@ -667,7 +684,19 @@ input::placeholder {
 
 }
 
-@media (min-width: 769px) and (max-width: 1023px) {
+@media (min-width:900px) {
+.flex-responsive{
+  display: flex !important;
+  gap: 10px;
+}
+
+.product-associated-imgs{
+  display: grid !important;
+  width: 22% !important;
+}
+}
+
+@media (min-width: 769px) and (max-width: 990px) {
   .h2-login {
     display: flex;
     justify-content: center;
@@ -737,6 +766,11 @@ input::placeholder {
   .product-info-card {
     min-width: 100% !important;
 
+  }
+
+    .sold-badge{
+    margin: 5% 25% 5% 25% !important;
+    text-align: center !important;
   }
 
 }
@@ -828,7 +862,17 @@ input::placeholder {
     padding: 5%;
     border-radius: 0 0 35px 35px;
     margin: 0;
+  }
 
+  .navbar-collapse{
+    background: #23272b;
+    position: absolute;
+    top: 100%;
+    width: 110%;
+    left: -5%;
+    padding: 5%;
+    border-radius: 0 0 35px 35px;
+    margin: 0;
   }
 
   .navbar-nav {

@@ -45,9 +45,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
             function renderProductDetail() {
                 detailDiv.innerHTML = `
-                <div class="product-info-card">
+               <div class="product-info-card">
                   <h1 class="product-title">${producto.name}</h1>
                   <div class="product-category">${data.catName}</div>
+                  <DIV class="flex-responsive">
                   <div class="product-main-img" style="position:relative;">
                     <button class="carousel-arrow left-arrow" style="position:absolute;left:10px;top:50%;transform:translateY(-50%);background:rgba(0,0,0,0.3);border:none;color:#fff;font-size:2rem;border-radius:50%;width:40px;height:40px;z-index:2;">&#8592;</button>
                     <img id="main-product-img" src="${images[currentIndex]}" alt="${producto.name}">
@@ -59,6 +60,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         <img src="${img}" alt="Imagen asociada">
                       </div>
                     `).join('')}
+                  </DIV>
                   </div>
                   <div class="product-description">
                     <strong>DESCRIPCIÓN</strong>
