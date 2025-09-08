@@ -1,3 +1,10 @@
+
+// Redirigir al login si el usuario no esta logueado
+if (!localStorage.getItem("email")) {
+    window.location.href = "login.html";
+    throw new Error("Redirigiendo al login");
+}
+
 const email = localStorage.getItem("email");
 const usuarioEmail = document.getElementById("usuario-email");
 const menuOpciones = document.getElementById("menu-opciones");
@@ -18,7 +25,6 @@ if (email) {
         localStorage.removeItem("email");
         window.location.reload();
     });
-
     window.addEventListener("click", (e) => {
         if (!e.target.matches("#usuario-email")) {
             menuOpciones.style.display = "none";
@@ -31,6 +37,7 @@ if (email) {
     };
     menuOpciones.style.display = "none";
 }
+
 
 // Cargar todos los productos
 

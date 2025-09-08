@@ -6,7 +6,7 @@ fetch('https://japceibal.github.io/emercado-api/cats_products/' + catID + '.json
   .then(respuesta => respuesta.json())
   .then(data => {
     products = data.products.map(auto => ({
-      id: auto.id, // <--- agrega el id
+      id: auto.id,
       name: auto.name,
       price: auto.cost,
       sold: auto.soldCount,
