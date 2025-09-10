@@ -11,7 +11,8 @@
   <link href="css/styles.css" rel="stylesheet">
 </head>
 
-<body>
+<body style="  overflow-x: auto ;
+  overflow-y: hidden;">
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark py-2 shadow-sm sticky-top">
     <div class="container position-relative d-flex align-items-center">
       <a class="navbar-brand fw-bold" href="index.html">eMercado</a>
@@ -28,68 +29,86 @@
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav ms-auto mb-2 mb-lg-0 text-center w-100">
           <li class="nav-item">
-            <a class="nav-link active" href="index.html"><i class="fa fa-home me-1"></i>Inicio</a>
+            <a class="nav-link active text-center " href="index.html"><i class="fa fa-home me-1"></i>Inicio</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="categories.html"><i class="fa fa-th-large me-1"></i>Categorías</a>
+            <a class="nav-link text-center " href="categories.html"><i class="fa fa-th-large me-1"></i>Categorías</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="sell.html"><i class="fa fa-tag me-1"></i>Vender</a>
+            <a class="nav-link text-center " href="sell.html"><i class="fa fa-tag me-1"></i>Vender</a>
           </li>
         </ul>
         <!-- Botón usuario/iniciar sesión al final del menú hamburguesa -->
         <div class="usuario-menu w-100 d-flex justify-content-center mt-2">
           <button id="usuario-email" class="btn btn-info btn-sm w-100"></button>
           <div id="menu-opciones" class="dropdown-menu" style="display:none; position:absolute;">
-            <a href="#" id="cerrar-sesion" class="dropdown-item text-danger">
-              <i class="fa fa-sign-out me-1"></i>Cerrar sesión
+            
+            <a href="my-profile.html" style="justify-content: center !important; margin-top: 3%; align-items: center;" class="dropdown-item d-flex align-items-center">
+              <i class="fa fa-user me-2 justi"></i>Mi Perfil
             </a>
+            <a href="cart.html" style="justify-content: center !important; margin-top: 3%; align-items: center;" class="dropdown-item d-flex align-items-center">
+              <i class="fa fa-shopping-cart me-2"></i>Carrito de Compra
+            </a>
+            <a href="#" id="cerrar-sesion" style="justify-content: center !important; margin-top: 3%; align-items: center;" class="dropdown-item text-danger">
+              <i style="justify-content: center; align-items: center;" class="fa fa-sign-out-alt me-2"></i>Cerrar sesión
+            </a>
+            
           </div>
         </div>
       </div>
     </div>
   </nav>
+  
   <main>
-    <div class="container">
-      <div class="alert alert-danger text-center" role="alert">
-        <h4 class="alert-heading">Funcionalidad en desarrollo</h4>
-      </div>
+    <div class="contenedor-carrito">
+      <section id="productos">
+        <div id="lista-productos" class="product-list"></div>
+      </section>
+
+      <section id="carrito">
+        <h1 class="cart-title" style="background: linear-gradient(135deg, #007bff, #00d4ff);">Carrito de Compras</h1>
+        <h2 style="margin-top: 1vw;">Tu Carrito</h2>
+        <div id="lista-carrito" class="cart-list"></div>
+        <div id="total-carrito" class="total"></div>
+        <button id="btn-pagar" class="btn-pagar">Proceder al Pago</button>
+      </section>
     </div>
   </main>
-<footer>
-  <div class="footer-container">
-    <div class="footer-col">
-      <h4>Información</h4>
-      <ul>
-        <li><a href="#">Sobre nosotros</a></li>
-        <li><a href="#">Términos y condiciones</a></li>
-        <li><a href="#">Política de privacidad</a></li>
-        <li><a href="#">Preguntas frecuentes</a></li>
-      </ul>
+  <footer>
+    <div class="footer-container">
+      <div class="footer-col">
+        <h4>Información</h4>
+        <ul>
+          <li><a href="#">Sobre nosotros</a></li>
+          <li><a href="#">Términos y condiciones</a></li>
+          <li><a href="#">Política de privacidad</a></li>
+          <li><a href="#">Preguntas frecuentes</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Integrantes</h4>
+        <ul>
+          <li>Alexis Salsamendi</li>
+          <li>Facundo Rigos</li>
+          <li>Agustín Fourcade</li>
+          <li>Sebastián Silva y Ferrer</li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Información del curso</h4>
+        <ul>
+          <li>Ceibal - UTEC</li>
+          <li>Jóvenes a Programar</li>
+          <li>Curso 314 - Fase 2</li>
+          <li>Grupo 2</li>
+        </ul>
+      </div>
     </div>
 
-    <div class="footer-col">
-      <h4>Integrantes</h4>
-      <ul>
-        <li>Alexis Salsamendi</li>
-        <li>Facundo Rigos</li>
-        <li>Agustín Fourcade</li>
-        <li>Sebastián Silva y Ferrer</li>
-      </ul>
-    </div>
-
-    <div class="footer-col">
-      <h4>Información del curso</h4>
-      <ul>
-        <li>Ceibal - UTEC</li>
-        <li>Jóvenes a Programar</li>
-        <li>Curso 314 - Fase 2</li>
-        <li>Grupo 2</li>
-      </ul>
-    </div>
-  </div>
-
-  <p style="text-align: center;padding: 10px 0; font-size: 0.9rem;color: #aaa;">© 2025 Proyecto E-Commerce | Todos los derechos reservados</p>
+    <p style="text-align: center;padding: 10px 0; font-size: 0.9rem;color: #aaa;">© 2025 Proyecto E-Commerce | Todos los
+      derechos reservados</p>
 
   </footer>
   <div id="spinner-wrapper">

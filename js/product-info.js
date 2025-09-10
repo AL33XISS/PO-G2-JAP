@@ -29,7 +29,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 return imgs;
             }
 
-            // Verifica si la imagen existe (opcional, para evitar imágenes rotas)
             async function filtrarImagenesExistentes(imgs) {
                 const checks = await Promise.all(imgs.map(src =>
                     fetch(src, { method: 'HEAD' }).then(r => r.ok ? src : null).catch(() => null)
@@ -69,7 +68,7 @@ document.addEventListener('DOMContentLoaded', () => {
                   <div class="product-bottom-row">
                     <span class="sold-badge">VENDIDOS: ${producto.soldCount}</span>
                     <div class="product-actions">
-                      <button class="btn-cart">
+                      <button class="btn-cart" id="btn-agregar-carrito">
                         <lord-icon
                             src="https://cdn.lordicon.com/uisoczqi.json"
                             trigger="hover"
@@ -78,13 +77,13 @@ document.addEventListener('DOMContentLoaded', () => {
                             style="width:30px;height:30px">
                         </lord-icon>                    
                       </button>
-
                       <button class="btn-buy">COMPRAR</button>
                     </div>
                   </div>
                 </div>
                 `;
                 addCarouselEvents();
+                addCartButtonEvent();
             }
 
             function addCarouselEvents() {
@@ -106,6 +105,32 @@ document.addEventListener('DOMContentLoaded', () => {
                         renderProductDetail();
                     });
                 });
+            }
+
+            function addCartButtonEvent() {
+                const btnAgregar = document.getElementById('btn-agregar-carrito');
+                if (btnAgregar) {
+                    btnAgregar.addEventListener('click', () => {
+                        let cart = JSON.parse(localStorage.getItem('carrito')) || [];
+                        const productoCarrito = {
+                            id: producto.id,
+                            name: producto.name,
+                            price: producto.cost,
+                            description: producto.description,
+                            image: producto.image,
+                            currency: producto.currency,
+                            quantity: 1
+                        };
+                        const existingProduct = cart.find(item => item.id === productoCarrito.id);
+                        if (existingProduct) {
+                            existingProduct.quantity += 1;
+                        } else {
+                            cart.push(productoCarrito);
+                        }
+                        localStorage.setItem('carrito', JSON.stringify(cart));
+                        alert('Producto agregado al carrito');
+                    });
+                }
             }
 
             renderProductDetail();
