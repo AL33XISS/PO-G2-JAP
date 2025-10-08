@@ -122,3 +122,103 @@ document.addEventListener("click", (e) => {
         document.getElementById("searchResults").style.display = "none";
     }
 });
+
+/* =============================================
+=          MODO CLARO/OSCURO MEJORADO        =
+============================================== */
+
+// dark-mode.js - Sistema de modo oscuro con transiciones suaves
+
+// Crear el botón de modo oscuro
+function createThemeToggleButton() {
+  const button = document.createElement('button');
+  button.className = 'theme-toggle-btn';
+  button.setAttribute('aria-label', 'Cambiar tema');
+  button.innerHTML = '🌙'; // Luna por defecto (modo claro)
+  document.body.appendChild(button);
+  return button;
+}
+
+// Obtener el tema guardado o usar 'light' por defecto
+function getSavedTheme() {
+  return localStorage.getItem('theme') || 'light';
+}
+
+// Guardar el tema en localStorage
+function saveTheme(theme) {
+  localStorage.setItem('theme', theme);
+}
+
+// Aplicar el tema
+function applyTheme(theme) {
+  const html = document.documentElement;
+  const button = document.querySelector('.theme-toggle-btn');
+  
+  if (theme === 'dark') {
+    html.setAttribute('data-theme', 'dark');
+    if (button) button.innerHTML = '☀️'; // Sol para modo oscuro
+  } else {
+    html.setAttribute('data-theme', 'light');
+    if (button) button.innerHTML = '🌙'; // Luna para modo claro
+  }
+  
+  saveTheme(theme);
+}
+
+// Alternar entre temas
+function toggleTheme() {
+  const currentTheme = document.documentElement.getAttribute('data-theme') || 'light';
+  const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+  
+  // Agregar una clase temporal para animación extra si lo deseas
+  document.body.classList.add('theme-transitioning');
+  
+  applyTheme(newTheme);
+  
+  // Remover la clase después de la transición
+  setTimeout(() => {
+    document.body.classList.remove('theme-transitioning');
+  }, 400);
+}
+
+// Inicializar el modo oscuro
+function initDarkMode() {
+  // Crear el botón
+  const button = createThemeToggleButton();
+  
+  // Aplicar el tema guardado inmediatamente (antes de que se vea la página)
+  const savedTheme = getSavedTheme();
+  applyTheme(savedTheme);
+  
+  // Agregar event listener al botón
+  button.addEventListener('click', toggleTheme);
+  
+  // Detectar preferencia del sistema (opcional)
+  const prefersDark = window.matchMedia('(prefers-color-scheme: dark)');
+  
+  // Solo aplicar preferencia del sistema si no hay tema guardado
+  if (!localStorage.getItem('theme')) {
+    applyTheme(prefersDark.matches ? 'dark' : 'light');
+  }
+  
+  // Escuchar cambios en la preferencia del sistema
+  prefersDark.addEventListener('change', (e) => {
+    if (!localStorage.getItem('theme')) {
+      applyTheme(e.matches ? 'dark' : 'light');
+    }
+  });
+}
+
+// Ejecutar cuando el DOM esté listo
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initDarkMode);
+} else {
+  initDarkMode();
+}
+
+// También puedes exponer funciones globalmente si las necesitas
+window.darkMode = {
+  toggle: toggleTheme,
+  setTheme: applyTheme,
+  getTheme: () => getSavedTheme()
+};
