@@ -558,7 +558,6 @@ input::placeholder {
   margin: 4% 0 1% 0;
   color: white;
   background: linear-gradient(135deg, #007bff, #00d4ff);
-  text-shadow: 3px 3px 20px rgba(255, 255, 255, 0.664);
   width: 100%;
   padding: 2%;
   border-radius: 25px 25px 0 0;
@@ -2053,6 +2052,7 @@ font-size: 2.5vw;
   padding: 20px;
   margin: 0;
   border-radius: 24px 24px 0 0;
+  text-transform: uppercase;
 }
 
 .rating-form {
@@ -2221,4 +2221,103 @@ font-size: 2.5vw;
     min-height: 100px;
     padding: 12px;
   }
+}
+/* =============================================
+=          FLECHAS DEL CARRUSEL FIJAS        =
+============================================== */
+
+.product-main-img {
+    position: relative;
+    background: #e0e0e0;
+    border-radius: 10px;
+    margin-bottom: 18px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden; /* Para que las flechas no se salgan */
+}
+
+.carousel-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0, 0, 0, 0.6) !important;
+    border: none !important;
+    color: #fff !important;
+    font-size: 1.8rem !important;
+    border-radius: 50% !important;
+    width: 45px !important;
+    height: 45px !important;
+    z-index: 10 !important;
+    opacity: 0.8;
+    transition: all 0.3s ease !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    cursor: pointer !important;
+    user-select: none;
+}
+
+.left-arrow {
+    left: 15px !important;
+}
+
+.right-arrow {
+    right: 15px !important;
+}
+
+.carousel-arrow:hover {
+    opacity: 1 !important;
+    background: rgba(0, 123, 255, 0.8) !important;
+    transform: translateY(-50%) scale(1.1) !important;
+    box-shadow: 0 4px 15px rgba(0, 123, 255, 0.4) !important;
+}
+
+.carousel-arrow:active {
+    transform: translateY(-50%) scale(0.95) !important;
+}
+
+/* Para móviles - hacer las flechas más grandes y visibles */
+@media (max-width: 768px) {
+    .carousel-arrow {
+        width: 50px !important;
+        height: 50px !important;
+        font-size: 2rem !important;
+        background: rgba(0, 0, 0, 0.8) !important;
+        opacity: 0.9;
+    }
+    
+    .left-arrow {
+        left: 10px !important;
+    }
+    
+    .right-arrow {
+        right: 10px !important;
+    }
+}
+
+/* Asegurar que la imagen principal no interfiera */
+.product-main-img img {
+    max-width: 100%;
+    max-height: 480px;
+    object-fit: contain;
+    position: relative;
+    z-index: 1;
+}
+
+/* Para pantallas muy pequeñas */
+@media (max-width: 480px) {
+    .carousel-arrow {
+        width: 40px !important;
+        height: 40px !important;
+        font-size: 1.5rem !important;
+    }
+    
+    .left-arrow {
+        left: 8px !important;
+    }
+    
+    .right-arrow {
+        right: 8px !important;
+    }
 }
