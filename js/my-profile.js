@@ -1,14 +1,23 @@
-let userProfile = JSON.parse(localStorage.getItem('userProfile')) || {
-  name: "",
-  email: "",
-  phone: "",
-  age: "",
-  gender: "Masculino",
-  address: "",
-  postalCode: "",
-  photo: ""
-};
+let emailDelLogin = localStorage.getItem('email');
 
+// Siempre cargar el perfil del email actual
+let userProfile = JSON.parse(localStorage.getItem('userProfile_' + emailDelLogin));
+if (!userProfile) {
+  // Si no existe, crea uno nuevo
+  userProfile = {
+    name: "",
+    email: emailDelLogin || "",
+    phone: "",
+    age: "",
+    gender: "",
+    address: "",
+    postalCode: "",
+    photo: ""
+  };
+  localStorage.setItem('userProfile_' + emailDelLogin, JSON.stringify(userProfile));
+}
+
+// Inputs y displays
 let nameInput = document.getElementById('username');
 let emailInput = document.getElementById('email');
 let phoneInput = document.getElementById('phone');
@@ -19,7 +28,6 @@ let postalCodeInput = document.getElementById('postalCode');
 let profilePicInput = document.getElementById('profile-pic-input');
 let saveBtn = document.getElementById('saveBtn');
 let editBtn = document.getElementById('editBtn');
-
 let displayName = document.getElementById('display-username');
 let displayEmail = document.getElementById('display-email');
 let displayPhone = document.getElementById('display-phone');
@@ -33,6 +41,9 @@ let profileMessage = document.getElementById('profile-message');
 let profileView = document.getElementById('profile-view');
 let profileEditForm = document.getElementById('profile-edit-form');
 
+// Navbar email
+let usuarioEmailBtn = document.getElementById('usuario-email');
+
 function loadProfile() {
   displayName.textContent = userProfile.name || "Sin nombre";
   displayEmail.textContent = userProfile.email || "Sin correo";
@@ -42,6 +53,8 @@ function loadProfile() {
   displayAddress.innerHTML = `<strong>Dirección:</strong> ${userProfile.address || "-"}`;
   displayPostalCode.innerHTML = `<strong>Código Postal:</strong> ${userProfile.postalCode || "-"}`;
   if(userProfile.photo) profilePic.src = userProfile.photo;
+  // Actualizar email en navbar
+  if (usuarioEmailBtn) usuarioEmailBtn.textContent = userProfile.email || "";
 }
 
 function fillInputs() {
@@ -55,6 +68,8 @@ function fillInputs() {
 }
 
 function saveProfile() {
+  // Si el usuario cambia el correo, actualiza el perfil y la clave en localStorage
+  let oldEmail = userProfile.email;
   userProfile.name = nameInput.value.trim();
   userProfile.email = emailInput.value.trim();
   userProfile.phone = phoneInput.value.trim();
@@ -63,23 +78,30 @@ function saveProfile() {
   userProfile.address = addressInput.value.trim();
   userProfile.postalCode = postalCodeInput.value.trim();
 
+  // Si cambió el correo, elimina el perfil anterior y guarda el nuevo
+  if (userProfile.email !== oldEmail) {
+    localStorage.removeItem('userProfile_' + oldEmail);
+    localStorage.setItem('email', userProfile.email); // Actualiza el email de sesión
+  }
+
+  function guardarYMostrar() {
+    localStorage.setItem('userProfile_' + userProfile.email, JSON.stringify(userProfile));
+    localStorage.setItem('email', userProfile.email);
+    showMessage("¡Perfil actualizado!");
+    loadProfile();
+    switchToView();
+  }
+
   if(profilePicInput.files && profilePicInput.files[0]){
     const reader = new FileReader();
     reader.onload = function(e){
       userProfile.photo = e.target.result;
-      profilePic.src = userProfile.photo;
-      localStorage.setItem('userProfile', JSON.stringify(userProfile));
-      showMessage("¡Perfil actualizado!");
-      switchToView();
+      guardarYMostrar();
     }
     reader.readAsDataURL(profilePicInput.files[0]);
   } else {
-    localStorage.setItem('userProfile', JSON.stringify(userProfile));
-    showMessage("¡Perfil actualizado!");
-    switchToView();
+    guardarYMostrar();
   }
-
-  loadProfile();
 }
 
 function showMessage(msg){

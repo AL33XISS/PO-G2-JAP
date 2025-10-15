@@ -1,4 +1,3 @@
-
 // Redirigir al login si el usuario no esta logueado
 if (!localStorage.getItem("email")) {
     window.location.href = "login.html";
@@ -157,9 +156,15 @@ function applyTheme(theme) {
   if (theme === 'dark') {
     html.setAttribute('data-theme', 'dark');
     if (button) button.innerHTML = '☀️'; // Sol para modo oscuro
+    
+    // Cambiar imagen de fondo con animación
+    document.body.style.backgroundImage = "url('../img/fondo_login_obscuro.png')";
   } else {
     html.setAttribute('data-theme', 'light');
     if (button) button.innerHTML = '🌙'; // Luna para modo claro
+    
+    // Restaurar imagen de fondo original
+    document.body.style.backgroundImage = "url('../img/fondo_login.png')";
   }
   
   saveTheme(theme);
@@ -183,6 +188,12 @@ function toggleTheme() {
 
 // Inicializar el modo oscuro
 function initDarkMode() {
+  // Asegurar que body tenga la transición CSS
+  document.body.style.transition = 'background-image 0.4s ease, background-color 0.4s ease';
+  document.body.style.backgroundSize = 'cover';
+  document.body.style.backgroundPosition = 'center';
+  document.body.style.backgroundAttachment = 'fixed';
+  
   // Crear el botón
   const button = createThemeToggleButton();
   
