@@ -9,7 +9,7 @@ if (!userProfile) {
     email: emailDelLogin || "",
     phone: "",
     age: "",
-    gender: "",
+    gender: "Masculino",
     address: "",
     postalCode: "",
     photo: ""
@@ -28,6 +28,7 @@ let postalCodeInput = document.getElementById('postalCode');
 let profilePicInput = document.getElementById('profile-pic-input');
 let saveBtn = document.getElementById('saveBtn');
 let editBtn = document.getElementById('editBtn');
+
 let displayName = document.getElementById('display-username');
 let displayEmail = document.getElementById('display-email');
 let displayPhone = document.getElementById('display-phone');

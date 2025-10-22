@@ -2994,7 +2994,7 @@ h1, h2, h3, h4, h5, h6, p, span, div, a, label {
 [data-theme="dark"] textarea,
 [data-theme="dark"] select {
   background-color: #2d2d2d !important;
-  color: white !important;
+  color: #ffffff !important;
   border-color: #404040 !important;
 }
 
@@ -3026,156 +3026,90 @@ h1, h2, h3, h4, h5, h6, p, span, div, a, label {
     right: 20px;
   }
 }
-/* =============================================
-   ESTILOS PARA MODO OSCURO
-============================================== */
 
-/* Transiciones para las tarjetas de categorías */
-.list-group-item {
-  transition: background-color 0.4s ease, border-color 0.4s ease, color 0.4s ease;
-}
-
-/* Estilos para modo oscuro - Tarjetas de categorías */
-[data-theme="dark"] .list-group-item {
-  background-color: #2d2d2d !important;
-  border-color: #404040 !important;
-  color: #e0e0e0 !important;
-}
-
-[data-theme="dark"] .list-group-item:hover {
-  background-color: #3a3a3a !important;
-}
-
-[data-theme="dark"] .list-group-item h4,
-[data-theme="dark"] .list-group-item p {
-  color: #e0e0e0 !important;
-}
-
-[data-theme="dark"] .list-group-item small.text-muted {
-  color: #a0a0a0 !important;
-}
-
-/* Estilos para los resultados de búsqueda en modo oscuro */
-[data-theme="dark"] .search-result-item {
-  background-color: #2d2d2d;
-  border-color: #404040;
-  color: #e0e0e0;
-}
-
-[data-theme="dark"] .search-result-name,
-[data-theme="dark"] .search-result-desc,
-[data-theme="dark"] .search-result-price {
-  color: #e0e0e0;
-}
-
-/* Botón de cambio de tema */
-.theme-toggle-btn {
-  position: fixed;
-  bottom: 30px;
-  right: 30px;
-  width: 60px;
-  height: 60px;
+/* Badge del carrito */
+#cartBadge {
+  font-size: 0.7rem;
+  padding: 0.25em 0.5em;
+  min-width: 1.5rem;
+  text-align: center;
   border-radius: 50%;
-  border: none;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  color: white;
-  font-size: 24px;
-  cursor: pointer;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  z-index: 1000;
+  line-height: 1;
+}
+
+/* Alineación del enlace del carrito */
+.nav-item .nav-link {
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-.theme-toggle-btn:hover {
-  transform: scale(1.1);
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+/* Asegurar que el badge esté pegado al texto */
+.nav-item .badge {
+  margin-left: 0.25rem !important;
 }
 
-.theme-toggle-btn:active {
-  transform: scale(0.95);
-}
-
-
-/* =============================================
-   MODO OSCURO - TARJETAS DE CATEGORÍAS PRINCIPALES
-============================================== */
-
-/* Tarjetas de categorías principales */
-[data-theme="dark"] .card.custom-card {
-  background-color: #3a3a3a !important;
-  color: #e0e0e0 !important;
-}
-
-[data-theme="dark"] .card.custom-card:hover {
-  background-color: #454545 !important;
-  box-shadow: 0 6px 20px rgba(0, 212, 255, 0.3) !important;
-
-}
-
-[data-theme="dark"] .card.custom-card h3 {
-  color: #ffffff !important;
-}
-
-[data-theme="dark"] .card.custom-card .card-body {
-  color: #e0e0e0 !important;
-
-}
-
-[data-theme="dark"] .card.custom-card .card-text {
-  color: #b0b0b0 !important;
-}
-
-/* Asegurar que las imágenes mantengan su brillo */
-[data-theme="dark"] .card.custom-card img {
-  opacity: 0.9;
-}
-
-[data-theme="dark"] .card.custom-card:hover img {
-  opacity: 1;
+/* Ajuste para móviles */
+@media (max-width: 991px) {
+  #cartBadge {
+    display: inline-block;
+    margin-left: 0.25rem;
+  }
 }
 
 
 
 
 
-
-
-/*
- * CAPA DE CORRECCIÓN PARA VISIBILIDAD DE INPUTS EN MODO CLARO
- *
- * Utilizamos un selector altamente específico para asegurar que estos estilos
- * se apliquen, solucionando la invisibilidad del .form-control en light-theme.
- */
-
-.light-theme input[placeholder="min."],
-.light-theme input[placeholder="máx."] {
-    /* Fondo que NO ES el fondo de la página */
-    background-color: #f0f0f0 !important; 
-    
-    /* Borde visible y sutil */
-    border: 1px solid #ced4da !important; 
-    
-    /* Aseguramos que el texto sea oscuro */
-    color: #333 !important; 
-    
-    /* Sobrescribimos cualquier estilo de línea inferior que pueda estar activo */
-    border-bottom: 1px solid #ced4da !important; 
-    
-    /* Pequeño padding y radio para que se vean como la captura original */
-    padding: 8px 12px !important;
-    border-radius: 4px !important;
+/* Estilos para el menú desplegable del usuario */
+#menu-opciones {
+  min-width: 180px;
+  padding: 0.5rem 0;
 }
 
-/* También corregimos el enfoque para que sea claro y visible */
-.light-theme input[placeholder="min."]:focus,
-.light-theme input[placeholder="máx."]:focus {
-    border-color: #007bff !important; /* Borde azul brillante al enfocar */
-    box-shadow: 0 0 0 0.25rem rgba(0, 123, 255, 0.25) !important;
-    outline: none !important;
+#menu-opciones .dropdown-item {
+  padding: 0.5rem 1rem;
+  transition: background-color 0.2s ease;
 }
+
+#menu-opciones .dropdown-item:hover {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+#menu-opciones .dropdown-divider {
+  margin: 0.5rem 0;
+}
+
+/* Badge del carrito */
+#cartBadge {
+  font-size: 0.7rem;
+  padding: 0.25em 0.5em;
+  min-width: 1.5rem;
+  text-align: center;
+  border-radius: 50%;
+  line-height: 1;
+}
+
+/* Alineación del enlace del carrito */
+.nav-item .nav-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Asegurar que el badge esté pegado al texto */
+.nav-item .badge {
+  margin-left: 0.25rem !important;
+}
+
+/* Ajuste para móviles */
+@media (max-width: 991px) {
+  #cartBadge {
+    display: inline-block;
+    margin-left: 0.25rem;
+  }
+}
+
 
 
 

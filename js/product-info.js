@@ -177,34 +177,77 @@ document.addEventListener('DOMContentLoaded', () => {
 
             // Evento para botón "Agregar al carrito"
             function addCartButtonEvent() {
-                const btnAgregar = document.getElementById('btn-agregar-carrito');
-                if (btnAgregar) {
-                    btnAgregar.addEventListener('click', () => {
-                        let cart = JSON.parse(localStorage.getItem('carrito')) || [];
+            const btnAgregar = document.getElementById('btn-agregar-carrito');
+            const btnComprar = detailDiv.querySelector('.btn-buy');
+            
+            if (btnAgregar) {
+                btnAgregar.addEventListener('click', () => {
+                    let cart = JSON.parse(localStorage.getItem('carrito')) || [];
 
-                        const productoCarrito = {
-                            id: producto.id,
-                            name: producto.name,
-                            price: producto.cost,
-                            description: producto.description,
-                            image: producto.image,
-                            currency: producto.currency,
-                            quantity: 1
-                        };
+                    const productoCarrito = {
+                        id: producto.id,
+                        name: producto.name,
+                        price: producto.cost,
+                        description: producto.description,
+                        image: producto.image,
+                        currency: producto.currency,
+                        quantity: 1
+                    };
 
-                        // Si ya está en el carrito, aumentar cantidad
-                        const existingProduct = cart.find(item => item.id === productoCarrito.id);
-                        if (existingProduct) {
-                            existingProduct.quantity += 1;
-                        } else {
-                            cart.push(productoCarrito);
-                        }
+                    // Si ya está en el carrito, aumentar cantidad
+                    const existingProduct = cart.find(item => item.id === productoCarrito.id);
+                    if (existingProduct) {
+                        existingProduct.quantity += 1;
+                    } else {
+                        cart.push(productoCarrito);
+                    }
 
-                        localStorage.setItem('carrito', JSON.stringify(cart));
-                        alert('Producto agregado al carrito');
-                    });
-                }
+                    localStorage.setItem('carrito', JSON.stringify(cart));
+                    
+                    // Actualizar el badge del carrito
+                    if (typeof updateCartBadge === 'function') {
+                        updateCartBadge();
+                    }
+                    
+                    alert('Producto agregado al carrito');
+                });
             }
+            
+            // NUEVO: Evento para botón "Comprar"
+            if (btnComprar) {
+                btnComprar.addEventListener('click', () => {
+                    let cart = JSON.parse(localStorage.getItem('carrito')) || [];
+
+                    const productoCarrito = {
+                        id: producto.id,
+                        name: producto.name,
+                        price: producto.cost,
+                        description: producto.description,
+                        image: producto.image,
+                        currency: producto.currency,
+                        quantity: 1
+                    };
+
+                    // Si ya está en el carrito, aumentar cantidad
+                    const existingProduct = cart.find(item => item.id === productoCarrito.id);
+                    if (existingProduct) {
+                        existingProduct.quantity += 1;
+                    } else {
+                        cart.push(productoCarrito);
+                    }
+
+                    localStorage.setItem('carrito', JSON.stringify(cart));
+                    
+                    // Actualizar el badge del carrito
+                    if (typeof updateCartBadge === 'function') {
+                        updateCartBadge();
+                    }
+                    
+                    // Redirigir al carrito
+                    window.location.href = 'cart.html';
+                });
+            }
+        }
 
             // Renderizar detalle del producto completo
             function renderProductDetail() {
@@ -450,10 +493,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 
-
-
-
-// 
+document.getElementById("addToCartBtn").addEventListener("click", function() {
+  addToCart(1);
+});
+ 
 
 
 

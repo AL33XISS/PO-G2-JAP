@@ -1,3 +1,4 @@
+
 // Redirigir al login si el usuario no esta logueado
 if (!localStorage.getItem("email")) {
     window.location.href = "login.html";
@@ -156,15 +157,9 @@ function applyTheme(theme) {
   if (theme === 'dark') {
     html.setAttribute('data-theme', 'dark');
     if (button) button.innerHTML = '☀️'; // Sol para modo oscuro
-    
-    // Cambiar imagen de fondo con animación
-    document.body.style.backgroundImage = "url('../img/fondo_login_obscuro.png')";
   } else {
     html.setAttribute('data-theme', 'light');
     if (button) button.innerHTML = '🌙'; // Luna para modo claro
-    
-    // Restaurar imagen de fondo original
-    document.body.style.backgroundImage = "url('../img/fondo_login.png')";
   }
   
   saveTheme(theme);
@@ -188,12 +183,6 @@ function toggleTheme() {
 
 // Inicializar el modo oscuro
 function initDarkMode() {
-  // Asegurar que body tenga la transición CSS
-  document.body.style.transition = 'background-image 0.4s ease, background-color 0.4s ease';
-  document.body.style.backgroundSize = 'cover';
-  document.body.style.backgroundPosition = 'center';
-  document.body.style.backgroundAttachment = 'fixed';
-  
   // Crear el botón
   const button = createThemeToggleButton();
   
@@ -233,3 +222,38 @@ window.darkMode = {
   setTheme: applyTheme,
   getTheme: () => getSavedTheme()
 };
+
+
+
+// =========================
+//   SISTEMA DE CARRITO
+// =========================
+
+// Obtiene el total actual de productos en el carrito
+function getCartCount() {
+  const cart = JSON.parse(localStorage.getItem('carrito')) || [];
+  return cart.reduce((total, item) => total + (item.quantity || 1), 0);
+}
+
+// Actualiza el badge del carrito en la navbar
+function updateCartBadge() {
+  const badge = document.getElementById("cartBadge");
+  if (badge) {
+    const count = getCartCount();
+    badge.textContent = count;
+    // Ocultar badge si no hay productos
+    badge.style.display = count > 0 ? 'inline-block' : 'none';
+  }
+}
+
+// Actualiza el badge al cargar cada página
+document.addEventListener("DOMContentLoaded", updateCartBadge);
+
+// Escuchar cambios en localStorage desde otras pestañas/ventanas
+window.addEventListener('storage', (e) => {
+  if (e.key === 'carrito') {
+    updateCartBadge();
+  }
+});
+
+

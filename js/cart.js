@@ -34,6 +34,11 @@ function updateCart() {
     }
     updateTotal();
     saveCart();
+    
+    // Actualizar el badge
+    if (typeof updateCartBadge === 'function') {
+        updateCartBadge();
+    }
 }
 
 window.updateQuantity = function(productId, quantity) {
@@ -75,3 +80,11 @@ document.getElementById('btn-pagar').addEventListener('click', proceedToCheckout
 
 // Inicializa el carrito al cargar la página
 updateCart();
+
+
+
+function toggleDarkMode() {
+    const body = document.body;
+    body.classList.toggle('dark-mode');   // activa/desactiva oscuro
+    body.classList.toggle('light-mode');  // activa/desactiva claro
+}
