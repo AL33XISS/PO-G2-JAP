@@ -235,7 +235,7 @@ function getCartCount() {
   return cart.reduce((total, item) => total + (item.quantity || 1), 0);
 }
 
-// Actualiza el badge del carrito en la navbar     .l
+// Actualiza el badge del carrito en la navbar     
 function updateCartBadge() {
   const badge = document.getElementById("cartBadge");
   if (badge) {

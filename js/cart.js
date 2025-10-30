@@ -73,7 +73,6 @@ function proceedToCheckout() {
         return;
     }
     alert('Procediendo al pago...');
-    // Aquí puedes redirigir o mostrar un modal de pago
 }
 
 document.getElementById('btn-pagar').addEventListener('click', proceedToCheckout);
