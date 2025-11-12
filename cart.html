@@ -11,8 +11,7 @@
   <link href="css/styles.css" rel="stylesheet">
 </head>
 
-<body style="  overflow-x: auto ;
-  overflow-y: hidden;">
+<body>
  <nav class="navbar navbar-expand-lg navbar-dark bg-dark py-2 shadow-sm sticky-top">
   <div class="container position-relative d-flex align-items-center">
     <a class="navbar-brand fw-bold" href="index.html">eMercado</a>
@@ -62,21 +61,126 @@
   </div>
 </nav>
   
-  <main>
-    <div class="contenedor-carrito">
-      <section id="productos">
-        <div id="lista-productos" class="product-list"></div>
-      </section>
+<main>
+  <div class="contenedor-carrito">
+    <section id="carrito">
+      <h1 class="cart-title" style="background: linear-gradient(135deg, #007bff, #00d4ff);">Carrito de Compras</h1>
+      
+      <!-- Lista de productos -->
+      <div id="lista-carrito" class="cart-list"></div>
+      
+      <!-- Tipo de envío -->
+      <div class="seccion-envio">
+        <h3>Tipo de envío</h3>
+        <div class="opciones-envio">
+          <label class="opcion-radio">
+            <input type="radio" name="tipoEnvio" value="0.15" id="premium">
+            <span>Premium 2 a 5 días (15%)</span>
+          </label>
+          <label class="opcion-radio">
+            <input type="radio" name="tipoEnvio" value="0.07" id="express">
+            <span>Express 5 a 8 días (7%)</span>
+          </label>
+          <label class="opcion-radio">
+            <input type="radio" name="tipoEnvio" value="0.05" id="standard" checked>
+            <span>Standard 12 a 15 días (5%)</span>
+          </label>
+        </div>
+      </div>
 
-      <section id="carrito">
-        <h1 class="cart-title" style="background: linear-gradient(135deg, #007bff, #00d4ff);">Carrito de Compras</h1>
-        
-        <div id="lista-carrito" class="cart-list"></div>
-        <div id="total-carrito" class="total"></div>
-        <button id="btn-pagar" class="btn-pagar">Proceder al Pago</button>
-      </section>
-    </div>
-  </main>
+      <!-- Dirección de envío -->
+      <div class="seccion-direccion">
+        <h3>Dirección de envío</h3>
+        <div class="form-direccion">
+          <div class="campo-form">
+            <label>Departamento</label>
+            <input type="text" id="departamento" placeholder="Ej: Montevideo">
+          </div>
+          <div class="campo-form">
+            <label>Localidad</label>
+            <input type="text" id="localidad" placeholder="Ej: Centro">
+          </div>
+          <div class="campo-form">
+            <label>Calle</label>
+            <input type="text" id="calle" placeholder="Ej: 18 de Julio">
+          </div>
+          <div class="campo-form-grupo">
+            <div class="campo-form">
+              <label>Número</label>
+              <input type="text" id="numero" placeholder="1234">
+            </div>
+            <div class="campo-form">
+              <label>Esquina</label>
+              <input type="text" id="esquina" placeholder="Ej: Convención">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Forma de pago -->
+      <div class="seccion-pago">
+        <h3>Forma de pago</h3>
+        <div class="opciones-pago">
+          <label class="opcion-radio">
+            <input type="radio" name="formaPago" value="tarjeta" id="pagoTarjeta" checked>
+            <span>💳 Tarjeta de crédito</span>
+          </label>
+          <label class="opcion-radio">
+            <input type="radio" name="formaPago" value="transferencia" id="pagoTransferencia">
+            <span>🏦 Transferencia bancaria</span>
+          </label>
+        </div>
+
+        <!-- Formularios de pago (ocultos por defecto) -->
+        <div id="formTarjeta" class="form-pago" style="display:block;">
+          <div class="campo-form">
+            <label>Número de tarjeta</label>
+            <input type="text" id="numTarjeta" placeholder="1234 5678 9012 3456" maxlength="19">
+          </div>
+          <div class="campo-form-grupo">
+            <div class="campo-form">
+              <label>Vencimiento</label>
+              <input type="text" id="vencimiento" placeholder="MM/AA" maxlength="5">
+            </div>
+            <div class="campo-form">
+              <label>CVV</label>
+              <input type="text" id="cvv" placeholder="123" maxlength="3">
+            </div>
+          </div>
+        </div>
+
+        <div id="formTransferencia" class="form-pago" style="display:none;">
+          <div class="campo-form">
+            <label>Número de cuenta</label>
+            <input type="text" id="numCuenta" placeholder="0123456789">
+          </div>
+          <div class="campo-form">
+            <label>Banco</label>
+            <input type="text" id="banco" placeholder="Ej: Banco República">
+          </div>
+        </div>
+      </div>
+
+      <!-- Costos -->
+      <div class="seccion-costos">
+        <div class="linea-costo">
+          <span>Subtotal:</span>
+          <span id="subtotal-valor">$0.00</span>
+        </div>
+        <div class="linea-costo">
+          <span>Costo de envío:</span>
+          <span id="envio-valor">$0.00</span>
+        </div>
+        <div class="linea-costo total-final">
+          <span>Total:</span>
+          <span id="total-final">$0.00</span>
+        </div>
+      </div>
+
+      <button id="btn-finalizar" class="btn-pagar">Finalizar compra</button>
+    </section>
+  </div>
+</main>
   <footer>
     <div class="footer-container">
       <div class="footer-col">
