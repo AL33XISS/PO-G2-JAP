@@ -1,5 +1,5 @@
 let carrito = JSON.parse(localStorage.getItem('carrito')) || [];
-const COTIZACION_USD = 40.50; // 1 USD = 40.50 
+const COTIZACION_USD = 40.50; 
 
 // Guardar carrito en localStorage
 function guardarCarrito() {
@@ -64,7 +64,7 @@ window.cambiarCantidad = function(idProducto, nuevaCantidad) {
         if (producto.quantity <= 0) {
             quitarProducto(idProducto);
         } else {
-            guardarCarrito(); // Guardar cambios
+            guardarCarrito(); 
             mostrarCarrito();
             
             // Actualizar badge
@@ -150,9 +150,7 @@ function validarCampo(id) {
 }
 
 // Validar todo el formulario antes de finalizar
-// Validar todo el formulario antes de finalizar
 function validarCompra() {
-    // 1. Validar que haya productos
     if (carrito.length === 0) {
         alert('El carrito está vacío. Agrega productos antes de finalizar la compra.');
         return false;

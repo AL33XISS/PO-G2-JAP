@@ -156,10 +156,10 @@ function applyTheme(theme) {
   
   if (theme === 'dark') {
     html.setAttribute('data-theme', 'dark');
-    if (button) button.innerHTML = '☀️'; // Sol para modo oscuro
+    if (button) button.innerHTML = '☀️'; 
   } else {
     html.setAttribute('data-theme', 'light');
-    if (button) button.innerHTML = '🌙'; // Luna para modo claro
+    if (button) button.innerHTML = '🌙'; 
   }
   
   saveTheme(theme);

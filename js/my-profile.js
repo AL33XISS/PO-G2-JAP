@@ -82,7 +82,7 @@ function saveProfile() {
   // Si cambió el correo, elimina el perfil anterior y guarda el nuevo
   if (userProfile.email !== oldEmail) {
     localStorage.removeItem('userProfile_' + oldEmail);
-    localStorage.setItem('email', userProfile.email); // Actualiza el email de sesión
+    localStorage.setItem('email', userProfile.email); 
   }
 
   function guardarYMostrar() {

@@ -68,11 +68,3 @@ function mostrarProductos(lista) {
   });
 
 }
-
-
-// Agregar al carrito
-
-
-
-
- 

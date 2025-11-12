@@ -60,8 +60,8 @@ document.addEventListener('DOMContentLoaded', () => {
             let productosRelacionados = [];
             try {
                 productosRelacionados = data.products
-                    .filter(p => p.id != id) // Excluir el producto actual
-                    .slice(0, 4) // Máximo 4 productos
+                    .filter(p => p.id != id) 
+                    .slice(0, 4) 
                     .map(p => ({
                         id: p.id,
                         name: p.name,
