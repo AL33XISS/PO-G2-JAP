@@ -21,7 +21,7 @@ function mostrarCarrito() {
         const item = document.createElement('div');
         item.className = 'cart-item';
         
-        // Convertir precio a USD si es necesario
+        // Convertir precio a USD
         const precioUSD = convertirAUSD(producto.price, producto.currency);
         const subtotalProducto = precioUSD * producto.quantity;
         
@@ -322,7 +322,7 @@ function validarCompra() {
 }
 
 // Finalizar compra
-function finalizarCompra() {
+async function finalizarCompra() {
     if (validarCompra()) {
         // Simular envío de datos
         const datosCompra = {
@@ -340,6 +340,45 @@ function finalizarCompra() {
         };
         
         console.log('Datos de compra:', datosCompra);
+
+        // Guardar carrito en la base de datos
+try {
+    const token = localStorage.getItem('authToken');
+    const email = localStorage.getItem('email');
+    
+    // Mapear email a usuario_id 
+    const usuarioId = email === 'sebastiansilvayferrer@JAP' ? 1 : 
+                  email === 'agustinfourcade@JAP' ? 2 : 
+                  email === 'alexissarsamendi@JAP' ? 3 : 
+                  email === 'invitado@JAP' ? 4 : 1; 
+    
+    const itemsCarrito = carrito.map(producto => ({
+        producto_id: producto.id,
+        cantidad: producto.quantity
+    }));
+
+    console.log('Items a guardar:', itemsCarrito);
+    console.log('Usuario ID:', usuarioId);
+    
+    if (token) {
+        const response = await fetch('http://localhost:3000/api/cart', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`
+            },
+            body: JSON.stringify({
+                usuario_id: usuarioId,
+                items: itemsCarrito
+            })
+        });
+        
+        const resultado = await response.json();
+        console.log('Carrito guardado en BD:', resultado);
+    }
+} catch (error) {
+    console.error('Error al guardar carrito:', error);
+}
         
         alert('¡Compra realizada con éxito! \n\nTotal: ' + datosCompra.total + '\n\nGracias por tu compra.');
         
